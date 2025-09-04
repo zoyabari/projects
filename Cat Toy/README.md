@@ -10,7 +10,7 @@ I bought a laser toy for my cats to keep them entertained, but it broke. Instead
 - Some tape  
 - A shoebox  
 - Arduino Uno  
-
+- Breadboard
 
 ## Steps to Build
 1. Measure the size of the servo and cut a hole in the bottom of the shoebox so it can sit securely.  
