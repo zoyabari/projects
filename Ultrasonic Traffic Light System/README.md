@@ -49,7 +49,7 @@ o	Activates red light (stop signal)
 o	Waits 2 seconds with yellow light (warning)  
 ![Wait](./images/yellow.jpg)
 o	Switches to green light for 3 seconds (go signal)  
-![Go](./images/green.png)
+![Go](./images/green.jpg)
 o	Returns to red light (default state)  
 ![Stop](./images/red.jpg)
 3.	Repeats the cycle  
