@@ -126,6 +126,4 @@ It constantly checks the keypad using `getKey()` to see if a button is pressed. 
 - **D →** reset()  
 - Any other key → prints a warning message  
 
-The loop itself doesn’t handle servo movement directly — it just listens for input and delegates the motion to the appropriate function.  
-
 Since all movement goes through `moveServo()`, the transitions stay smooth and `startPos` is always kept up to date.  
