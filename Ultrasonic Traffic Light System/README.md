@@ -45,13 +45,13 @@ o	VCC and GND → Breadboard power rails
 1.	Continuously monitors distance using the ultrasonic sensor  
 2.	When an object is detected within 5cm:   
 o	Activates red light (stop signal)  
-![Stop](./images/red.png)
+![Stop](./images/red.jpg)
 o	Waits 2 seconds with yellow light (warning)  
-![Wait](./images/yellow.png)
+![Wait](./images/yellow.jpg)
 o	Switches to green light for 3 seconds (go signal)  
 ![Go](./images/green.png)
 o	Returns to red light (default state)  
-![Stop](./images/red.png)
+![Stop](./images/red.jpg)
 3.	Repeats the cycle  
 
 ## Technical Details
