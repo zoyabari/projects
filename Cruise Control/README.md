@@ -21,13 +21,15 @@ F_disturbance = external forces like hills, wind (N)
 
 Coverting it to an ode:
 
-The Complete Force Balance:
-m * dv/dt = u(t) - b * v(t) - d(t)
+The Complete Force Balance: m * dv/dt = u(t) - b * v(t) - d(t)
 Where:
+
 u(t) = control input (throttle force)
 Physical origin: Force delivered by engine through transmission to wheels
+
 b * v(t) = drag force (proportional to speed)
 Physical origin: Combined air resistance, rolling resistance, and drivetrain friction
+
 How we get b = 100:  coefficient representing total drag per unit velocity, we assume it to be 100, referring to an average example where at highway speed (30 m/s), typical car experiences ~3000 N total drag
 So b ≈ 3000 / 30 = 100 N·s/m (reasonable approximation)
 
