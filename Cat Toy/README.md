@@ -10,7 +10,7 @@ I bought a laser toy for my cats to keep them entertained, but it broke. Instead
 - Some tape  
 - A shoebox  
 - Arduino Uno  
-
+- Breadboard
 
 ## Steps to Build
 1. Measure the size of the servo and cut a hole in the bottom of the shoebox so it can sit securely.  
@@ -125,7 +125,5 @@ It constantly checks the keypad using `getKey()` to see if a button is pressed. 
 - **C →** autoPlay()  
 - **D →** reset()  
 - Any other key → prints a warning message  
-
-The loop itself doesn’t handle servo movement directly — it just listens for input and delegates the motion to the appropriate function.  
 
 Since all movement goes through `moveServo()`, the transitions stay smooth and `startPos` is always kept up to date.  
