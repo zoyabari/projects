@@ -4,20 +4,10 @@ I now designed a cruise control control system for a car on simulink, using a si
 
 During high school, my favorite areas in physics and math aside from electricity, were mechanics, kinematics, and calculus. Pursuing computer engineering has since streamlined my focus toward electricity, embedded systems, and computing, however this project felt like a nostalgic return to my A-level roots. It was both refreshing and mildly traumatic in the best academic sense.
 
-My initial design consisted of gain blocks with values for Ki,Kd and Kp but recently, I added an adaptive control block that dynamically tunes the PID gains during simulation. The idea was to create a controller that adjusts itself based on performance.
-
-The Adaptive Block is a MATLAB Function block in Simulink that runs at every sample hit (e.g., every 0.1 s). Internally, it uses persistent variables to remember the current controller gains. At each tick, it compares the reference speed r with the measured speed v, then nudges the gains—Kp, Ki, and Kd—up or down based on the sign and magnitude of the error.
-The block outputs the updated gains (Kp_new, Ki_new, Kd_new), which are fed into the P/I/D branches via Product blocks.
-
 ![Model: ](./images/simulink.png)  
 
-Here is a visualisation of ref value to vehicle speed in a simulation run:
-![ ](./images/update_1.png)  
 
-
-Input: Desired speed (Step block) – in m/s 
-Output: Actual vs Desired vehicle speed 
-(Scope block output) – in m/s
+Input: Desired speed (Step block) – in m/s Output: Actual vs Desired vehicle speed (Scope block output) – in m/s
 
 For a car moving in one dimension, Newton's second law gives us:
 ma = F_applied - F_drag - F_disturbance
@@ -28,7 +18,7 @@ F_applied = throttle force from engine (N)
 F_drag = air resistance and rolling resistance (N)
 F_disturbance = external forces like hills, wind (N)
 
-Coverting it to an ODE:
+Coverting it to an ode:
 
 The Complete Force Balance: m * dv/dt = u(t) - b * v(t) - d(t)
 Where:
@@ -86,26 +76,14 @@ Controller Objectives:
 - If the vehicle does not reach the set point, increase Kp or Ki.
 - If the vehicle overshoots or becomes unstable, reduce Kd or Kp.
 
+Here are some experiments I did with random values:
+![](./images/test_1.png)  
 
-How it works:
-- Starts with: Kp = 800, Ki = 50, Kd = 10
-- If the car is slower than the target by more than 0.5 m/s, each tick increases Kp and Ki exponentially:
-- After 10 ticks (1 second at 0.1 s sample time):
-- Kp grows by ≈ 10.5% → Kp × 1.01¹⁰ ≈ 1.105 × Kp
-- Ki grows by ≈ 5.1% → Ki × 1.005¹⁰ ≈ 1.051 × Ki
-- Once the error is within ±0.5 m/s, no further adjustments are made.
-- If the car overshoots, Kp is reduced and Kd is increased to add damping and reduce future overshoot.
+![](./images/test_2.png)  
 
+![](./images/test_3.png)  
 
-Here you can visualise the changes in signals:
-![l: ](./images/signals.png)  
-
-🟡 Yellow (Kp_new):
-Started at Kp = 800. Initially, the error between reference and velocity was large, so the adaptation law increased Kp rapidly, peaking around 1600. As the system approached the setpoint and overshoot occurred, the logic reduced Kp, stabilizing it around 200. This reflects the controller “pushing hard” to catch up, then calming down to prevent oscillations.
-🔵 Blue (Ki_new):
-Ki began at 50 and increased gradually due to initial undershoot. It remained in the tens to low hundreds, which makes sense—integral action typically evolves slowly and is tuned conservatively to avoid windup.
-🟠 Orange (Kd_new):
-Kd barely moved, adjusting only during overshoot events. It hovered around 10–20, which aligns with the adaptation law’s design—derivative action is lightly tuned to avoid amplifying noise.
+![](./images/test_4.png)
 
 5. Control Signal
 Total control: u(t) = uP + uI + uD
@@ -126,4 +104,4 @@ Integral action ensures no steady-state speed error
 Control Theory Principles:
 Closed-loop feedback ensures automatic correction
 
-
+I tried re-modeling the system using a PID block, as well as Transfer Function blocks instead of building it from differential equations, and also tried to define your system in the s-domain and see how it responds. It was very fun and took me a lot of trial and error, but for the final model I resorted to building my own controller, and also making the ode since I haven't done odes in sooo long and this was a very nice and fun refresher and it was nice to see everything layed out.

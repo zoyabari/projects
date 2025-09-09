@@ -1,0 +1,42 @@
+function [Kp_new, Ki_new, Kd_new] = adaptPID(r, v)
+
+
+% persistent variables to store gains across timesteps
+persistent Kp Ki Kd
+if isempty(Kp)
+    Kp = 800;
+    Ki = 50;
+    Kd = 10;
+end
+
+% tuning parameters
+alpha = 0.01;    
+beta  = 0.005;   
+gamma = 0.005;   
+tol   = 0.5;     
+
+% error
+error = r - v;
+
+% If vehicle too slow (undershoot) -> need more drive
+if error > tol
+    Kp = Kp * (1 + alpha);
+    Ki = Ki * (1 + beta);
+end
+
+% If vehicle overshooting -> back off
+if error < -tol
+    Kp = Kp * (1 - alpha);
+    Kd = Kd * (1 + gamma);
+end
+
+% clamp gains to reasonable ranges
+Kp = min(max(Kp, 100), 2000);
+Ki = min(max(Ki, 50), 600);
+Kd = min(max(Kd, 0), 200);
+
+% output
+Kp_new = Kp;
+Ki_new = Ki;
+Kd_new = Kd;
+end
