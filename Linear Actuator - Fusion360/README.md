@@ -1,0 +1,3 @@
+I  designed a simplified linear actuator for solar tracking applications, based on the LINAK LA35 datasheet. After analyzing the datasheet and assignment requirements, I modelled the actuator and its main components, and prepared full technical drawings in both 3rd-angle orthographic and isometric projection, as well as detailed hand drawings.
+
+[IDP A Assignment 3 (PDF)](./images/IDP_A_Assignment_3.pdf)
