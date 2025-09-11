@@ -6,3 +6,4 @@ Multiple circuit configurations were tested using NI Multisim to evaluate perfor
 After validating the design in simulation, we built and soldered the final design onto a protoboard. The completed circuit was tested using lab equipment, and the output closely matched our simulation results.
 
 ![l: ](./images/circuit.jpg)  
+[IDP B Assignment (PDF)](./images/IDP_B_Project_Final.pdf)
