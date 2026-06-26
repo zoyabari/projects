@@ -2,6 +2,8 @@ For one of my Year-2 engineering project modules, I was tasked with handling the
 
 The first diagram presents a software-in-the-loop simulation of a complex industrial control architecture, implemented as a Simulink-based digital twin of a dual-PLC Safety Instrumented System (SIS) and Basic Process Control System (BPCS), demonstrating strict IEC 61508 functional segregation and multi-tier sensor voting logic.
 
+![Model: ](./images/plc_diagram.png)  
+
 Key Features:
 - Rather than modelling sensors as simple binary inputs, each of the 74 sensor channels is simulated as a first-order dynamic system using the state-space transfer function , where (K) is derived from the ISA-5.1 4–20 mA standard and tau from manufacturer T90 response times.
 - Physical inputs are modelled using specific, designated sinewave/step/constant blocks to represent realistic environmental fluctuations. Normal operation uses biased Sine Wave sources that oscillate naturally below alarm thresholds, while critical fault conditions are injected using Step blocks to test system response.
@@ -10,6 +12,8 @@ Key Features:
 - All telemetry from the sensor network is routed into a 4-channel multiplexer and transmitted continuously over a simulated fibre-optic link to shore, remaining uninterrupted even during safety events.
 
 The second model simulates the complete electrical power chain, from a three-phase AC source through a six-diode rectifier, down to a 24 V DC instrumentation bus powering the habitat's full sensor and automation infrastructure.
+
+![Model: ](./images/electrical_diagram.png)  
 
 Rather than modelling every sensor at component level, the simulation uses a deliberate abstraction strategy that was required for the assignment: each sensor tier is aggregated into a single equivalent resistive load block in Simscape, with resistance calculated from (R=\frac{V^2}{P_{nom}}) at the 24 V DC bus. This allows the full 74-channel sensor network to be represented realistically in terms of power consumption without the computational overhead of 74 individual signal chains.
 
