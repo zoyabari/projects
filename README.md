@@ -14,4 +14,4 @@ This is A collection of my engineering projects spanning embedded systems, contr
 
 🛠️ Mechanical Design
 - Linear Actuator (Fusion 360)
-- Underwater Habitat Pressure Vessel+ Moon Pool+ ROV/Submarine Docking Interface, PLC Enclosure (Fusion 360)
+- PLC Enclosure (Fusion 360)
