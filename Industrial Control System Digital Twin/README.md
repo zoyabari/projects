@@ -1,6 +1,9 @@
 For one of my Year-2 engineering project modules, I was tasked with handling the control, instrumentation, and automation systems for a conceptual autonomous underwater habitat.
 
-I first made a sample model of a PLC Enclosure, docking system and submarine on Fusion360.
+I first made a sample model of a PLC Enclosure on Fusion360.
+
+
+![Model:](./images/PLC_Enclosure.png)
 
 The first diagram presents a software-in-the-loop simulation of a complex industrial control architecture, implemented as a Simulink-based digital twin of a dual-PLC Safety Instrumented System (SIS) and Basic Process Control System (BPCS), demonstrating strict IEC 61508 functional segregation and multi-tier sensor voting logic.
 
