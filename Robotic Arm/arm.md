@@ -1,0 +1,5 @@
+This project involved the design and implementation of a programmable robotic arm capable of coordinated movement across six axes. The objective was to create a low-cost robotic manipulator capable of executing repeatable motions while demonstrating core robotics principles, including kinematics, motor control, and embedded programming.
+
+The robotic arm integrates multiple servo motors for joint articulation and a NEMA 17 stepper motor for high-torque rotational movement. An Arduino Uno serves as the central controller, coordinating all actuator movements through custom control algorithms.
+
+This project was also presented as part of a larger project idea at SEE Youth Sustainibility hackathon and was awarded Second Place. The solution was recognized for its successful integration of mechanical design, embedded control, and functional robotic operation within the competition timeframe, as well as the potential to be realistic and scalable in the concept of beach cleaning purposes and assistance to workers in the UAE under harsh weather conditions.
